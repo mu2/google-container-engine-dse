@@ -1,0 +1,10 @@
+imports:
+- path: cassandra.jinja
+
+resources:
+- name: cassandra
+  type: cassandra.jinja
+  properties:
+    cluster: <cluster name>
+    numNodes: 4
+

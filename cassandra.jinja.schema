@@ -1,0 +1,30 @@
+info:
+  description: Cassandra cluster on kubernetes.
+  author: TBD
+  version: draft
+
+required:
+- cluster
+- numNodes
+
+properties:
+  cluster:
+    type: string
+    description: Cluster name.
+  numNodes:
+    type: integer
+    description: Number of nodes in the cluster, used for the host-port hack.
+  ports:
+    type: object
+    default: {}
+    properties:
+      opscenter:
+        type: integer
+        description: Port for opscenter node.
+        # TODO: CHANGE ME!
+        default: 8080
+      node:
+        type: integer
+        description: Port for nodes.
+        # TODO: CHANGE ME!
+        default: 8080

@@ -1,0 +1,43 @@
+
+resources:
+# Seed service and RC.
+- name: {{ env['deployment'] }}-{{ env['name'] }}-seed-service
+  type: {{ CLUSTER_TYPE }}:{{ SERVICE_COLLECTION }}
+  properties:
+    apiVersion: v1
+    kind: Service
+    namespace: default
+    metadata:
+      name: {{ env['name'] }}-seed
+    spec:
+      ports:
+      - port: {{ PORT }}
+        targetPort: {{ PORT }}
+        protocol: TCP
+      selector:
+        name: {{ env['name'] }}-node-0
+
+{% for i in range(properties['numNodes']) %}
+- name: {{ env['deployment'] }}-{{ env['name'] }}-node-{{ i }}
+  type: {{ CLUSTER_TYPE }}:{{ RC_COLLECTION }}
+  properties:
+    apiVersion: v1
+    kind: ReplicationController
+    namespace: default
+    metadata:
+      name: {{ env['name'] }}-node-{{ i }}
+    spec:
+      template:
+        metadata:
+          labels:
+            name: {{ env['name'] }}-node-{{ i }}
+        spec:
+          containers:
+          - name: ubuntu
+            image: ubuntu
+            env:
+            - name: some_env_vars
+              value: not-set
+            ports:
+            - containerPort: {{ PORT }}
+{% endfor %}

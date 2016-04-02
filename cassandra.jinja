@@ -1,0 +1,109 @@
+{% set CLUSTER_TYPE = env['project'] + '/' + properties['cluster'] + '-v1' %}
+
+{% set COLLECTION_PREFIX = '/api/v1/namespaces/{namespace}/' %}
+{% set RC_COLLECTION = COLLECTION_PREFIX + 'replicationcontrollers' %}
+{% set SERVICE_COLLECTION = COLLECTION_PREFIX + 'services' %}
+
+{% set NAME_PREFIX = env['deployment'] + '-' + env['name'] %}
+{% set OPSCENTER_NAME = NAME_PREFIX + '-opscenter' %}
+{% set NODE_NAME = NAME_PREFIX + '-node' %}
+{% set SEED_NAME = NAME_PREFIX + '-seed' %}
+
+{% set PORT = properties['ports']['node'] %}
+{% set OPSCENTER_PORT = properties['ports']['opscenter'] %}
+
+resources:
+#
+# Opscenter node.
+#
+- name: {{ OPSCENTER_NAME }}
+  type: {{ CLUSTER_TYPE }}:{{ SERVICE_COLLECTION }}
+  properties:
+    apiVersion: v1
+    kind: Service
+    namespace: default
+    metadata:
+      name: {{ OPSCENTER_NAME }}
+    spec:
+      # Uncomment this for external IP for testing.
+      # type: LoadBalancer
+      ports:
+      - port: {{ PORT }}
+        targetPort: {{ PORT }}
+        protocol: TCP
+      selector:
+        name: {{ OPSCENTER_NAME }}
+
+- name: {{ OPSCENTER_NAME }}-rc
+  type: {{ CLUSTER_TYPE }}:{{ RC_COLLECTION }}
+  properties:
+    apiVersion: v1
+    kind: ReplicationController
+    namespace: default
+    metadata:
+      name: {{ OPSCENTER_NAME }}-rc
+    spec:
+      template:
+        metadata:
+          labels:
+            name: {{ OPSCENTER_NAME }}
+        spec:
+          containers:
+          # TODO: CHANGE ME!
+          - name: opscenter
+            image: gcr.io/deployment-manager-examples/nodejsservicestatic
+            env:
+            - name: SEED_NODE_SERVICE
+              value: {{ SEED_NAME }}
+            ports:
+            - containerPort: {{ OPSCENTER_PORT }}
+
+#
+# Seed service.
+#
+- name: {{ SEED_NAME }}
+  type: {{ CLUSTER_TYPE }}:{{ SERVICE_COLLECTION }}
+  properties:
+    apiVersion: v1
+    kind: Service
+    namespace: default
+    metadata:
+      name: {{ SEED_NAME }}
+    spec:
+      # Uncomment this for external IP for testing.
+      # type: LoadBalancer
+      ports:
+      - port: {{ PORT }}
+        targetPort: {{ PORT }}
+        protocol: TCP
+      selector:
+        name: {{ NODE_NAME }}-0
+
+#
+# Nodes.
+#
+{% for i in range(properties['numNodes']) %}
+- name: {{ NODE_NAME }}-{{ i }}
+  type: {{ CLUSTER_TYPE }}:{{ RC_COLLECTION }}
+  properties:
+    apiVersion: v1
+    kind: ReplicationController
+    namespace: default
+    metadata:
+      name: {{ NODE_NAME }}-{{ i }}
+    spec:
+      template:
+        metadata:
+          labels:
+            name: {{ NODE_NAME }}-{{ i }}
+        spec:
+          containers:
+          # TODO: CHANGE ME!
+          - name: cassandra
+            image: gcr.io/deployment-manager-examples/nodejsservicestatic
+            env:
+            - name: SEED_NODE_SERVICE
+              value: {{ SEED_NAME }}
+            ports:
+            - containerPort: {{ PORT }}
+{% endfor %}

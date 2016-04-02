@@ -1,0 +1,11 @@
+resources:
+- name: {{ env['name'] }}-v1
+  type: deploymentmanager.local.type
+  properties:
+    configurableService:
+      descriptorUrl: https://{{ properties['ip'] }}/swaggerapi/api/v1
+      credential:
+        basicAuth:
+          user: {{ properties['user'] }}
+          password: {{ properties['password'] }}
+

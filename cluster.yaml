@@ -1,0 +1,11 @@
+imports:
+- path: cluster-type.jinja
+
+resources:
+- name: <cluster name>
+  type: cluster-type.jinja
+  properties:
+    ip: <cluster IP>
+    user: <cluster basicauth username>
+    password: <cluster basicauth password>
+
