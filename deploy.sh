@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 # You typically would start with deploying a cluster on GKE
 gcloud container clusters create <cluster-name>
 
