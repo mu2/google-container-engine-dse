@@ -5,6 +5,5 @@ resources:
 - name: cassandra
   type: cassandra.jinja
   properties:
-    cluster: <cluster name>
-    numNodes: 4
+    clusterType: cluster-my-cluster-type
 

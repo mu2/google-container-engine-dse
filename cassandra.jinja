@@ -1,4 +1,4 @@
-{% set CLUSTER_TYPE = env['project'] + '/' + properties['cluster'] + '-v1' %}
+{% set CLUSTER_TYPE = env['project'] + '/' + properties['clusterType'] %}
 
 {% set COLLECTION_PREFIX = '/api/v1/namespaces/{namespace}/' %}
 {% set RC_COLLECTION = COLLECTION_PREFIX + 'replicationcontrollers' %}

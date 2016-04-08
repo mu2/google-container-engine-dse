@@ -10,14 +10,14 @@ info:
 
 required:
 - ip
-- user
+- username
 - password
 
 properties:
   ip:
     type: string
     description: IP of the Kubernetes apiserver.
-  user:
+  username:
     type: string
     description: Basic auth username for interacting with the Kubernetes API.
   password:
