@@ -4,16 +4,17 @@ info:
   version: draft
 
 required:
-- cluster
+- clusterType
 - numNodes
 
 properties:
-  cluster:
+  clusterType:
     type: string
-    description: Cluster name.
+    description: Type for cluster to deploy into.
   numNodes:
     type: integer
     description: Number of nodes in the cluster, used for the host-port hack.
+    default: 4
   ports:
     type: object
     default: {}
