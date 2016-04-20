@@ -3,9 +3,8 @@ imports:
 - path: cluster.jinja
 
 resources:
-- name: <cluster name>
+- name: clustername
   type: cluster.jinja
   properties:
-    username: <cluster basicauth username>
-    password: <cluster basicauth password>
-
+    username: username
+    password: password

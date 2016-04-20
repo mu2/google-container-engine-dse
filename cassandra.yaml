@@ -5,5 +5,4 @@ resources:
 - name: cassandra
   type: cassandra.jinja
   properties:
-    clusterType: cluster-my-cluster-type
-
+    clusterType: cluster-clustername-type
