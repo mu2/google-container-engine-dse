@@ -4,7 +4,7 @@
 {% set RC_COLLECTION = COLLECTION_PREFIX + 'replicationcontrollers' %}
 {% set SERVICE_COLLECTION = COLLECTION_PREFIX + 'services' %}
 
-{% set NAME_PREFIX = env['deployment'] + '-' + env['name'] %}
+{% set NAME_PREFIX = env['deployment'] %}
 {% set OPSCENTER_NAME = NAME_PREFIX + '-opscenter' %}
 {% set NODE_NAME = NAME_PREFIX + '-node' %}
 {% set SEED_NAME = NAME_PREFIX + '-seed' %}
