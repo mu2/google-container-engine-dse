@@ -49,9 +49,8 @@ resources:
             name: {{ OPSCENTER_NAME }}
         spec:
           containers:
-          # TODO: CHANGE ME!
           - name: opscenter
-            image: gcr.io/deployment-manager-examples/nodejsservicestatic
+            image: ubuntu-latest
             env:
             - name: SEED_NODE_SERVICE
               value: {{ SEED_NAME }}
@@ -98,12 +97,13 @@ resources:
             name: {{ NODE_NAME }}-{{ i }}
         spec:
           containers:
-          # TODO: CHANGE ME!
           - name: cassandra
-            image: gcr.io/deployment-manager-examples/nodejsservicestatic
+            image: ubuntu-latest
             env:
             - name: SEED_NODE_SERVICE
               value: {{ SEED_NAME }}
             ports:
             - containerPort: {{ PORT }}
+            command:
+            - sleep 10
 {% endfor %}
