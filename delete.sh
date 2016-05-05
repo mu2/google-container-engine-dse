@@ -1,0 +1,3 @@
+gcloud deployment-manager deployments update cassandra --config empty.yaml --delete-policy ABANDON
+gcloud deployment-manager deployments delete cassandra
+

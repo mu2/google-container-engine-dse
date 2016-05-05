@@ -56,6 +56,9 @@ resources:
               value: {{ SEED_NAME }}
             ports:
             - containerPort: {{ OPSCENTER_PORT }}
+            command:
+            - touch foo
+
 
 #
 # Seed service.
@@ -105,5 +108,5 @@ resources:
             ports:
             - containerPort: {{ PORT }}
             command:
-            - touch hi
+            - touch bar
 {% endfor %}
