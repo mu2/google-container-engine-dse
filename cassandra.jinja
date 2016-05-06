@@ -14,7 +14,7 @@
 
 resources:
 #
-# Opscenter node.
+# Opscenter node
 #
 - name: {{ OPSCENTER_NAME }}
   type: {{ CLUSTER_TYPE }}:{{ SERVICE_COLLECTION }}
@@ -61,7 +61,7 @@ resources:
 
 
 #
-# Seed service.
+# Seed service
 #
 - name: {{ SEED_NAME }}
   type: {{ CLUSTER_TYPE }}:{{ SERVICE_COLLECTION }}
@@ -82,7 +82,7 @@ resources:
         name: {{ NODE_NAME }}-0
 
 #
-# Nodes.
+# Nodes
 #
 {% for i in range(properties['numNodes']) %}
 - name: {{ NODE_NAME }}-{{ i }}
