@@ -57,8 +57,9 @@ resources:
             ports:
             - containerPort: {{ OPSCENTER_PORT }}
             command:
-            - echo "hi"
-            - sleep 3600
+            - /bin/bash
+            - -c
+            - echo hi; sleep 3600
 
 
 #
@@ -109,6 +110,8 @@ resources:
             ports:
             - containerPort: {{ PORT }}
             command:
-            - echo "hi"
-            - sleep 3600
+            - /bin/bash
+            - -c
+            - echo hi; sleep 3600
+            
 {% endfor %}
