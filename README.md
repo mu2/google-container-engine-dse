@@ -47,10 +47,12 @@ gcloud container clusters list
 gcloud container clusters get-credentials cluster-clustername
 
 kubectl get namespaces
+
 kubectl get pods
+
 kubectl get rc
 
-kubectl log --previous cassandra-opscenter-rc-5qjv6
+kubectl logs --previous cassandra-opscenter-rc-5qjv6
 
 kubectl describe pod cassandra-opscenter-rc-5qjv6
 
