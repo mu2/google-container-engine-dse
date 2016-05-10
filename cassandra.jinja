@@ -59,7 +59,11 @@ resources:
             command:
             - /bin/bash
             - -c
-            - wget https://github.com/DSPN/install-datastax/archive/master.zip; apt-get -y install unzip; unzip master.zip; sleep 3600
+            - apt-get -y install wget;
+            - wget https://github.com/DSPN/install-datastax/archive/master.zip;
+            - apt-get -y install unzip;
+            - unzip master.zip;
+            - sleep 3600
 #      cd install-datastax-master/bin
 #      cloud_type="google"
 #      seed_nodes_dns_names=$SEED_NODE_SERVICE
@@ -117,7 +121,7 @@ resources:
             command:
             - /bin/bash
             - -c
-            - echo hi; sleep 3600
+            - echo "hi"; sleep 3600
 
 #        mkdir /mnt
 #        wget https://github.com/DSPN/install-datastax/archive/master.zip
