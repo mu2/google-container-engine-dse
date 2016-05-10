@@ -39,3 +39,23 @@ deploy.sh runs the command:
 ## Deleting a Cluster
 
 The [https://cloud.google.com/](https://cloud.google.com/) interface currently has an issue deleting a cluster.  A workaround is provided in the [delete.sh](delete.sh) script.
+
+## Misc Commands
+
+gcloud container clusters list
+
+gcloud container clusters get-credentials cluster-clustername
+
+kubectl get namespaces
+kubectl get pods
+kubectl get rc
+
+kubectl log --previous cassandra-opscenter-rc-5qjv6
+
+kubectl describe pod cassandra-opscenter-rc-5qjv6
+
+kubectl describe pod kubernetes-dashboard-v1.0.1-7g62n --namespace=kube-system
+
+sudo docker ps
+
+https://docs.docker.com/engine/quickstart/

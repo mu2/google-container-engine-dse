@@ -50,14 +50,15 @@ resources:
         spec:
           containers:
           - name: opscenter
-            image: ubuntu-latest
+            image: ubuntu:latest
             env:
             - name: SEED_NODE_SERVICE
               value: {{ SEED_NAME }}
             ports:
             - containerPort: {{ OPSCENTER_PORT }}
             command:
-            - touch foo
+            - echo "hi"
+            - sleep 3600
 
 
 #
@@ -101,12 +102,13 @@ resources:
         spec:
           containers:
           - name: cassandra
-            image: ubuntu-latest
+            image: ubuntu:latest
             env:
             - name: SEED_NODE_SERVICE
               value: {{ SEED_NAME }}
             ports:
             - containerPort: {{ PORT }}
             command:
-            - touch bar
+            - echo "hi"
+            - sleep 3600
 {% endfor %}
