@@ -59,7 +59,7 @@ resources:
             command:
             - /bin/bash
             - -c
-            - sleep 60; apt-get update; apt-get -y install wget
+            - sleep 60; apt-get update; apt-get -y install wget; wget https://raw.githubusercontent.com/DSPN/google-container-engine-dse/master/scripts/opscenter.sh; ./opscenter.sh
 
 #
 # Seed service
@@ -111,6 +111,6 @@ resources:
             command:
             - /bin/bash
             - -c
-            - sleep 60; apt-get update; apt-get -y install wget
+            - sleep 60; apt-get update; apt-get -y install wget; wget https://raw.githubusercontent.com/DSPN/google-container-engine-dse/master/scripts/dse.sh; ./dse.sh
 
 {% endfor %}
