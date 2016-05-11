@@ -5,7 +5,7 @@ These don't work yet.  Sorry.  Something isn't right with the OpsCenter node and
 
 ## Getting started
 
-Deploying to GKE is a two step process.  The [deploy.sh](deploy.sh) script wraps both these commands.
+Deploying to GKE is a two step process.  The [deploy.sh](deploy.sh) script wraps both the deploy cluster and deploy DataStax commands.
 
 ### Deploy a cluster
 
@@ -24,7 +24,7 @@ This will result in two resources:
 * a GKE cluster with the name specified in `cluster.yaml`
 * a Deployment Manager type named `<deployment-name>-<cluster-name>-type`
 
-### Deploying DSE
+### Deploying DataStax
 
 Using `datastax.yaml`, deploy to the GKE cluster created in the last step.
 Consider modifying the following information before deploying:
