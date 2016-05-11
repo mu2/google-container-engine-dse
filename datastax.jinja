@@ -59,8 +59,7 @@ resources:
             command:
             - /bin/bash
             - -c
-            - sleep 60;
-            - apt-get update; apt-get -y install wget; wget https://github.com/DSPN/install-datastax/archive/master.zip; apt-get -y install unzip; unzip master.zip; sleep 3600
+            - sleep 60; apt-get update; apt-get -y install wget; wget https://github.com/DSPN/install-datastax/archive/master.zip; apt-get -y install unzip; unzip master.zip; sleep 3600
 
 #            - cd install-datastax-master/bin;
 #            - cloud_type="google";
@@ -124,13 +123,8 @@ resources:
             command:
             - /bin/bash
             - -c
-            - sleep 60; mkdir /mnt; apt-get update; apt-get -y install wget; sleep 3600
+            - sleep 60; apt-get update; apt-get -y install wget; wget https://github.com/DSPN/install-datastax/archive/master.zip; apt-get -y install unzip; unzip master.zip; cd install-datastax-master/bin; cloud_type="google"; sleep 3600
 
-#            - wget https://github.com/DSPN/install-datastax/archive/master.zip;
-#            - apt-get -y install unzip;
-#            - unzip master.zip;
-#            - cd install-datastax-master/bin;
-#            - cloud_type="google";
 #            - zone=$(curl -s -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/zone" | grep -o [[:alnum:]-]*$);
 #            - data_center_name=$zone;
 #            - seed_nodes_dns_names=$SEED_NODE_SERVICE;
