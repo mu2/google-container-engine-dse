@@ -6,6 +6,7 @@ unzip master.zip
 cd install-datastax-master/bin
 
 cloud_type="google"
+apt-get install curl
 zone=$(curl -s -H "Metadata-Flavor: Google" "http://metadata.google.internal/computeMetadata/v1/instance/zone" | grep -o [[:alnum:]-]*$)
 data_center_name=$zone;
 seed_nodes_dns_names=$SEED_NODE_SERVICE;
