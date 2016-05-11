@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-wget https://github.com/DSPN/install-datastax/archive/master.zip
-apt-get -y install unzip
-unzip master.zip
-cd install-datastax-master/bin
-
 echo "installing a bunch of prerequisites"
 apt-get -y install dnsutils # install dig
 apt-get -y install curl
 apt-get -y install sudo
 echo "done with prerequisites"
+
+wget https://github.com/DSPN/install-datastax/archive/master.zip
+apt-get -y install unzip
+unzip master.zip
+cd install-datastax-master/bin
 
 cloud_type="gke"
 seed_nodes_dns_names=$SEED_NODE_SERVICE
