@@ -1,6 +1,6 @@
 info:
-  description: DataStax cluster on Kubernetes
-  author: Brendan Melville and Ben Lackey
+  description: DataStax Enterprise on Kubernetes
+  author: Google, Inc.
   version: draft
 
 required:
