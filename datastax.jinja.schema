@@ -1,5 +1,5 @@
 info:
-  description: Cassandra cluster on kubernetes.
+  description: DataStax cluster on kubernetes.
   author: TBD
   version: draft
 

@@ -1,8 +1,8 @@
 imports:
-- path: cassandra.jinja
+- path: datastax.jinja
 
 resources:
-- name: cassandra
-  type: cassandra.jinja
+- name: datastax
+  type: datastax.jinja
   properties:
     clusterType: cluster-clustername-type

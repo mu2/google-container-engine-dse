@@ -26,7 +26,7 @@ This will result in two resources:
 
 ### Deploying DSE
 
-Using `cassandra.yaml`, deploy to the GKE cluster created in the last step.
+Using `datastax.yaml`, deploy to the GKE cluster created in the last step.
 Consider modifying the following information before deploying:
 
 * the cluster type created for the GKE cluster deployed previously
@@ -34,7 +34,7 @@ Consider modifying the following information before deploying:
 
 deploy.sh runs the command:
 
-    gcloud deployment-manager deployments create cassandra --config cassandra.yaml
+    gcloud deployment-manager deployments create datastax --config datastax.yaml
 
 ## Deleting a Cluster
 
@@ -52,9 +52,9 @@ kubectl get pods
 
 kubectl get rc
 
-kubectl logs --previous cassandra-opscenter-rc-5qjv6
+kubectl logs --previous datastax-opscenter-rc-5qjv6
 
-kubectl describe pod cassandra-opscenter-rc-5qjv6
+kubectl describe pod datastax-opscenter-rc-5qjv6
 
 kubectl describe pod kubernetes-dashboard-v1.0.1-7g62n --namespace=kube-system
 
