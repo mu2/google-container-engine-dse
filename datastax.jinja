@@ -25,8 +25,7 @@ resources:
     metadata:
       name: {{ OPSCENTER_NAME }}
     spec:
-      # Uncomment this for external IP for testing.
-      # type: LoadBalancer
+      type: LoadBalancer
       ports:
       - port: {{ PORT }}
         targetPort: {{ PORT }}
