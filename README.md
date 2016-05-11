@@ -50,7 +50,7 @@ With the current configs, our cluster is always called cluster-clustername, so w
 
     gcloud container clusters get-credentials cluster-clustername
 
-Now kubectl will work.  Some common commands are:
+Now kubectl will work.  Some helpful commands are:
 
     kubectl get namespaces
     kubectl get rc
@@ -70,6 +70,6 @@ You can also log into the GCE machine running a particular container and issue d
 
 To get the external IP of the OpsCenter machine (running on port 8888) use:
 
-    kubectl cluster-info
+    kubectl get services
 
 This is a great reference for getting started with docker commands: https://docs.docker.com/engine/quickstart/
