@@ -5,11 +5,9 @@ apt-get -y install unzip
 unzip master.zip
 cd install-datastax-master/bin
 
-####
 echo "installing a bunch of pre-requisites"
 apt-get -y install adduser curl lsb-base procps zlib1g gzip python python-support sysstat ntp bash tree
 echo "done with prerequisites"
-
 
 cloud_type="gke"
 seed_nodes_dns_names=$SEED_NODE_SERVICE
