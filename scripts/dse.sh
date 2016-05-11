@@ -6,10 +6,11 @@ unzip master.zip
 cd install-datastax-master/bin
 
 echo "installing a bunch of prerequisites"
+apt-get -y install dnsutils # install dig
+apt-get -y install sudo
 apt-get -y install adduser curl lsb-base procps zlib1g gzip sysstat ntp bash tree
-#apt-get -y install python python-dev python-distribute python-pip
-#still need python-support and do not have it...
 apt-get -y install python python-support
+apt-get -y install apt-transport-https
 echo "done with prerequisites"
 
 cloud_type="gke"
@@ -21,8 +22,6 @@ echo cloud_type $cloud_type
 echo seed_nodes_dns_names $seed_nodes_dns_names
 echo data_center_name $data_center_name
 
-apt-get -y install curl
-apt-get -y install sudo
 ./dse.sh $cloud_type $seed_nodes_dns_names $data_center_name
 
 sleep 3600
