@@ -59,7 +59,8 @@ resources:
             command:
             - /bin/bash
             - -c
-            - sleep 60; apt-get update; apt-get -y install wget; wget https://github.com/DSPN/install-datastax/archive/master.zip; apt-get -y install unzip; unzip master.zip; sleep 3600
+            - sleep 60;
+            - apt-get update; apt-get -y install wget; wget https://github.com/DSPN/install-datastax/archive/master.zip; apt-get -y install unzip; unzip master.zip; sleep 3600
 
 #            - cd install-datastax-master/bin;
 #            - cloud_type="google";
@@ -123,11 +124,8 @@ resources:
             command:
             - /bin/bash
             - -c
-            - sleep 3600
+            - sleep 60; mkdir /mnt; apt-get update; apt-get -y install wget; sleep 3600
 
-#            - mkdir /mnt;
-#            - apt-get update;
-#            - apt-get install wget;
 #            - wget https://github.com/DSPN/install-datastax/archive/master.zip;
 #            - apt-get -y install unzip;
 #            - unzip master.zip;
