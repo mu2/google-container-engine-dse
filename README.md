@@ -42,22 +42,30 @@ The [https://cloud.google.com/](https://cloud.google.com/) interface currently h
 
 ## Misc Commands
 
-gcloud container clusters list
+A good place to start:
 
-gcloud container clusters get-credentials cluster-clustername
+    gcloud container clusters list
 
-kubectl get namespaces
+With the current configs, our cluster is always called cluster-clustername, so we can get credentials by running:
 
-kubectl get pods
+    gcloud container clusters get-credentials cluster-clustername
 
-kubectl get rc
+Now kubectl will work.  Some common commands are:
 
-kubectl logs --previous datastax-opscenter-rc-5qjv6
+    kubectl get namespaces
+    kubectl get rc
+    kubectl get pods
 
-kubectl describe pod datastax-opscenter-rc-5qjv6
+Once you get a pod's name, you can run the following.  Previous is especially useful in debeugging as it shows the logs from the last container that attempted to run.
 
-kubectl describe pod kubernetes-dashboard-v1.0.1-7g62n --namespace=kube-system
+    kubectl logs datastax-opscenter-rc-5qjv6
+    kubectl logs --previous datastax-opscenter-rc-5qjv6
+    kubectl describe pod datastax-opscenter-rc-5qjv6
+    kubectl describe pod kubernetes-dashboard-v1.0.1-7g62n --namespace=kube-system
 
-sudo docker ps
+You can also log into the GCE machine running a particular container and issue docker commands:
 
-https://docs.docker.com/engine/quickstart/
+    sudo su
+    docker ps
+
+This is a great reference for getting started with docker commands: https://docs.docker.com/engine/quickstart/
