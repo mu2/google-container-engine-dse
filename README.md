@@ -68,4 +68,8 @@ You can also log into the GCE machine running a particular container and issue d
     sudo su
     docker ps
 
+To get the external IP of the OpsCenter machine (running on port 8888) use:
+
+    kubectl cluster-info
+
 This is a great reference for getting started with docker commands: https://docs.docker.com/engine/quickstart/
