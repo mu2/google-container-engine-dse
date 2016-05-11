@@ -59,12 +59,7 @@ resources:
             command:
             - /bin/bash
             - -c
-            - apt-get update;
-            - apt-get -y install wget;
-            - wget https://github.com/DSPN/install-datastax/archive/master.zip;
-            - apt-get -y install unzip;
-            - unzip master.zip;
-            - sleep 3600
+            - apt-get update; apt-get -y install wget; wget https://github.com/DSPN/install-datastax/archive/master.zip; apt-get -y install unzip; unzip master.zip; sleep 3600
 
 #            - cd install-datastax-master/bin;
 #            - cloud_type="google";
