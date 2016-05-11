@@ -5,7 +5,7 @@ apt-get -y install unzip
 unzip master.zip
 cd install-datastax-master/bin
 
-cloud_type="google"
+cloud_type="gke"
 seed_nodes_dns_names=$SEED_NODE_SERVICE
 data_center_name="dc0"
 
