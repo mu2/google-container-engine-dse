@@ -49,7 +49,7 @@ resources:
         spec:
           containers:
           - name: opscenter
-            image: ubuntu:latest
+            image: ubuntu:14.04
             env:
             - name: SEED_NODE_SERVICE
               value: {{ SEED_NAME }}
@@ -102,7 +102,7 @@ resources:
         spec:
           containers:
           - name: datastax
-            image: ubuntu:latest
+            image: ubuntu:14.04
             env:
             - name: SEED_NODE_SERVICE
               value: {{ SEED_NAME }}

@@ -5,8 +5,11 @@ apt-get -y install unzip
 unzip master.zip
 cd install-datastax-master/bin
 
-echo "installing a bunch of pre-requisites"
-apt-get -y install adduser curl lsb-base procps zlib1g gzip python python-support sysstat ntp bash tree
+echo "installing a bunch of prerequisites"
+apt-get -y install adduser curl lsb-base procps zlib1g gzip sysstat ntp bash tree
+#apt-get -y install python python-dev python-distribute python-pip
+#still need python-support and do not have it...
+apt-get -y install python python-support
 echo "done with prerequisites"
 
 cloud_type="gke"
