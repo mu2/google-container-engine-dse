@@ -1,7 +1,7 @@
 # google-container-engine-dse
 Google Deployment Manager scripts for deploying DataStax Enterprise (DSE) on Google Container Engine (GKE)
 
-These don't work yet.  Sorry.  Something isn't right with the OpsCenter node and we're having issues getting a startup script to run using command.  Some nodes are setup but DSE is not installed.
+These don't work yet.  Sorry.  Something isn't right with the network.  Otherwise it all seems there.
 
 ## Getting started
 
