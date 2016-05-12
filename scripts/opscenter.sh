@@ -4,10 +4,10 @@ echo "installing a bunch of prerequisites"
 apt-get -y install dnsutils # install dig
 apt-get -y install curl
 apt-get -y install sudo
+apt-get -y install unzip
 echo "done with prerequisites"
 
 wget https://github.com/DSPN/install-datastax/archive/master.zip
-apt-get -y install unzip
 unzip master.zip
 cd install-datastax-master/bin
 

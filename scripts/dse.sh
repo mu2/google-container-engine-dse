@@ -6,10 +6,10 @@ apt-get -y install sudo
 apt-get -y install adduser curl lsb-base procps zlib1g gzip sysstat ntp bash tree
 apt-get -y install python python-support
 apt-get -y install apt-transport-https
+apt-get -y install unzip
 echo "done with prerequisites"
 
 wget https://github.com/DSPN/install-datastax/archive/master.zip
-apt-get -y install unzip
 unzip master.zip
 cd install-datastax-master/bin
 
