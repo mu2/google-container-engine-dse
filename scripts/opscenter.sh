@@ -14,7 +14,7 @@ cd install-datastax-master/bin
 cloud_type="gke"
 seed_nodes_dns_names=$SEED_NODE_SERVICE
 
-echo "Configuring nodes with the settings:"
+echo "Configuring OpsCenter with the settings:"
 echo cloud_type $cloud_type
 echo seed_nodes_dns_names $seed_nodes_dns_names
 
