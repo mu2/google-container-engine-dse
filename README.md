@@ -13,7 +13,7 @@ The [deploy.sh](deploy.sh) script wraps both the deploy cluster and deploy DataS
 
 Consider modifying the following information in `cluster.yaml` before deploying:
 
-* desired cluster name
+* desired cluster name, `clustername` by default
 * basicauth username and password for authenticating access to the cluster
 
 deploy.sh runs the command:
@@ -23,7 +23,7 @@ deploy.sh runs the command:
 This will result in two resources:
 
 * a GKE cluster with the name specified in `cluster.yaml`
-* a Deployment Manager type named `<deployment-name>-<cluster-name>-type`
+* a Deployment Manager type named `cluster-clustername`
 
 ### Inside deploy.sh -- Deploying DataStax
 
