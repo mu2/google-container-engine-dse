@@ -1,2 +1,5 @@
+# used by delete workaround
+empty.yaml
+
 # PyCharm files
 *.idea
