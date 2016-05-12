@@ -20,4 +20,5 @@ echo seed_nodes_dns_names $seed_nodes_dns_names
 
 ./opscenter.sh $cloud_type $seed_nodes_dns_names
 
-sleep 3600
+# 100 hours
+sleep 360000

@@ -35,4 +35,5 @@ nodetool status
 sleep 60
 nodetool status
 
-sleep 3600
+# 100 hours
+sleep 360000
