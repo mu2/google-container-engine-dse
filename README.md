@@ -3,14 +3,15 @@ Google Deployment Manager scripts for deploying DataStax Enterprise (DSE) on Goo
 
 These don't work yet.  Sorry.  Something isn't right with the network.  Otherwise it all seems there.
 
-## Getting started
+## Getting Started
 
-Deploying to GKE is a two step process.  The [deploy.sh](deploy.sh) script wraps both the deploy cluster and deploy DataStax commands.
+The [deploy.sh](deploy.sh) script wraps both the deploy cluster and deploy DataStax commands.  To create a cluster simply run:
 
-### Deploy a cluster
+    ./deploy.sh
 
-Using `cluster.yaml`, deploy a GKE cluster to use for deploying the solution
-later. Consider modifying the following information before deploying:
+### Inside deploy.sh -- Deploy a Cluster
+
+Consider modifying the following information in `cluster.yaml` before deploying:
 
 * desired cluster name
 * basicauth username and password for authenticating access to the cluster
@@ -24,10 +25,9 @@ This will result in two resources:
 * a GKE cluster with the name specified in `cluster.yaml`
 * a Deployment Manager type named `<deployment-name>-<cluster-name>-type`
 
-### Deploying DataStax
+### Inside deploy.sh -- Deploying DataStax
 
-Using `datastax.yaml`, deploy to the GKE cluster created in the last step.
-Consider modifying the following information before deploying:
+Consider modifying the following information in `datastax.yaml` before deploying:
 
 * the cluster type created for the GKE cluster deployed previously
 * the number of nodes in the cluster (if changed from the default 4 nodes)
@@ -40,7 +40,7 @@ deploy.sh runs the command:
 
 The [https://cloud.google.com/](https://cloud.google.com/) interface currently has an issue deleting a cluster.  A workaround is provided in the [delete.sh](delete.sh) script.
 
-## Misc Commands
+## Working with a Cluster
 
 A good place to start:
 
@@ -61,19 +61,18 @@ Once you get a pod's name, you can run the following.  Previous is especially us
     kubectl logs datastax-opscenter-rc-5qjv6
     kubectl logs --previous datastax-opscenter-rc-5qjv6
     kubectl describe pod datastax-opscenter-rc-5qjv6
-    kubectl describe pod kubernetes-dashboard-v1.0.1-7g62n --namespace=kube-system
 
-You can also log into the GCE machine running a particular container and issue docker commands:
+You can also log into the GCE machine running a particular container via SSH and issue docker commands:
 
     sudo su
     docker ps
+
+To start an interactive shell session on a container (useful for debugging and running nodetool and cqlsh)
+
+    docker exec -i -t 83cddbf5327c /bin/bash
 
 To get the external IP of the OpsCenter machine (running on port 8888) use:
 
     kubectl get services
 
 This is a great reference for getting started with docker commands: https://docs.docker.com/engine/quickstart/
-
-To start an interactive shell session on a container (useful for debugging and running nodetool and cqlsh), ssh to the host GCE box and then run:
-
-    docker exec -i -t 83cddbf5327c /bin/bash
