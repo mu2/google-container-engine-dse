@@ -21,9 +21,9 @@ properties:
     properties:
       opscenter:
         type: integer
-        description: Port for OpsCenter (not sure this is right)
+        description: Port for OpsCenter
         default: 8888
       node:
         type: integer
-        description: Port for DataStax Enterprise nodes (not sure this is right)
-        default: 8888
+        description: Port for DataStax Enterprise nodes
+        default: 9042

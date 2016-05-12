@@ -27,8 +27,8 @@ resources:
     spec:
       type: LoadBalancer
       ports:
-      - port: {{ PORT }}
-        targetPort: {{ PORT }}
+      - port: {{ OPSCENTER_PORT }}
+        targetPort: {{ OPSCENTER_PORT }}
         protocol: TCP
       selector:
         name: {{ OPSCENTER_NAME }}
