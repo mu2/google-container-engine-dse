@@ -64,12 +64,11 @@ Once you get a pod's name, you can run the following.  Previous is especially us
 
 You can also log into the GCE machine running a particular container via SSH and issue docker commands:
 
-    sudo su
-    docker ps
+    sudo docker ps
 
 To start an interactive shell session on a container (useful for debugging and running nodetool and cqlsh)
 
-    docker exec -i -t 83cddbf5327c /bin/bash
+    sudo docker exec -i -t 83cddbf5327c /bin/bash
 
 To get the external IP of the OpsCenter machine (running on port 8888) use:
 
