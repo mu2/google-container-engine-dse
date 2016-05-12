@@ -73,3 +73,7 @@ To get the external IP of the OpsCenter machine (running on port 8888) use:
     kubectl get services
 
 This is a great reference for getting started with docker commands: https://docs.docker.com/engine/quickstart/
+
+To start an interactive shell session on a container, ssh to the host GCE box and then run:
+
+    docker exec -i -t 83cddbf5327c /bin/bash
