@@ -24,16 +24,5 @@ echo data_center_name $data_center_name
 
 ./dse.sh $cloud_type $seed_nodes_dns_names $data_center_name
 
-sleep 60
-nodetool status
-sleep 60
-nodetool status
-sleep 60
-nodetool status
-sleep 60
-nodetool status
-sleep 60
-nodetool status
-
 # 100 hours
 sleep 360000

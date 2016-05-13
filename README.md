@@ -50,28 +50,26 @@ With the current configs, our cluster is always called cluster-clustername, so w
 
     gcloud container clusters get-credentials cluster-clustername
 
-Now kubectl will work.  Some helpful commands are:
+Now kubectl will work.  We can get the names of the nodes with the command:
 
-    kubectl get namespaces
-    kubectl get rc
     kubectl get pods
 
-Once you get a pod's name, you can run the following.  Previous is especially useful in debeugging as it shows the logs from the last container that attempted to run.
+Once you get a pod's name, you can run the following.  Previous is especially useful in debugging as it shows the logs from the last container that attempted to run.
 
     kubectl logs datastax-opscenter-rc-5qjv6
     kubectl logs --previous datastax-opscenter-rc-5qjv6
-    kubectl describe pod datastax-opscenter-rc-5qjv6
 
-You can also log into the GCE machine running a particular container via SSH and issue docker commands:
-
-    sudo docker ps
-
-To start an interactive shell session on a container (useful for debugging and running nodetool and cqlsh)
-
-    sudo docker exec -i -t 83cddbf5327c /bin/bash
-
-To get the external IP of the OpsCenter machine (running on port 8888) use:
+To get the external IP of the OpsCenter machine (running on port 8888) use the following command.  You can then open a web browser to that ip and port to view OpsCenter.
 
     kubectl get services
+
+To check your cluster is running from the command line you can run the command:
+
+    kubectl exec datastax-node-0-n1yqu nodetool status
+
+You can also log into the GCE machine running a particular container via SSH and issue docker commands.  To start an interactive shell session on a container (useful for debugging and running nodetool and cqlsh) do the following:
+
+    sudo docker ps
+    sudo docker exec -i -t 83cddbf5327c /bin/bash
 
 This is a great reference for getting started with docker commands: https://docs.docker.com/engine/quickstart/

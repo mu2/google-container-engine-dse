@@ -9,14 +9,14 @@ kubectl get pods
 # datastax-node-2-jc7dm
 # datastax-node-3-fyrrp
 
+# interestingly the load balancer seems to be working for OpsCenter.  Maybe it only needs 9042?
+
 # seed line is currently:
 #          - seeds: "10.163.241.102"
 
-kubectl exec datastax-node-0-n1yqu cp /etc/dse/cassandra/cassandra.yaml /etc/dse/cassandra/cassandra.yaml.bak
-
+# this sed isn't working for some reason.  It works when run from an interactive session
 kubectl exec datastax-node-0-n1yqu sed -i 's/10.163.241.102/10.160.0.3/' /etc/dse/cassandra/cassandra.yaml
+
 kubectl exec datastax-node-0-n1yqu cat /etc/dse/cassandra/cassandra.yaml | grep seeds:
 kubectl exec datastax-node-0-n1yqu service dse restart
-
-
-nodetool status
+kubectl exec datastax-node-0-n1yqu nodetool status
