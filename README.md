@@ -24,7 +24,7 @@ Once you get a pod's name, you can run the following.  Previous is especially us
     kubectl logs datastax-opscenter-rc-5qjv6
     kubectl logs --previous datastax-opscenter-rc-5qjv6
 
-To get the external IP of the OpsCenter machine (running on port 8888) use the following command.  You can then open a web browser to that ip and port to view OpsCenter.
+To get the external IP of the OpsCenter machine (running on port 8888) use the following command.  It may take a few minutes after deployment completes for the OpsCenter external IP to be assigned.  You can then open a web browser to that ip and port to view OpsCenter.
 
     kubectl get services
 
