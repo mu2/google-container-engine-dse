@@ -9,9 +9,6 @@
 {% set NODE_NAME = NAME_PREFIX + '-node' %}
 {% set SEED_NAME = NAME_PREFIX + '-seed' %}
 
-{% set PORT = properties['ports']['node'] %}
-{% set OPSCENTER_PORT = properties['ports']['opscenter'] %}
-
 resources:
 #
 # OpsCenter node
@@ -27,8 +24,11 @@ resources:
     spec:
       type: LoadBalancer
       ports:
-      - port: {{ OPSCENTER_PORT }}
-        targetPort: {{ OPSCENTER_PORT }}
+      - port: 8888
+        targetPort: 8888
+        protocol: TCP
+      - port: 61620
+        targetPort: 61620
         protocol: TCP
       selector:
         name: {{ OPSCENTER_NAME }}
@@ -54,7 +54,8 @@ resources:
             - name: SEED_NODE_SERVICE
               value: {{ SEED_NAME }}
             ports:
-            - containerPort: {{ OPSCENTER_PORT }}
+            - containerPort: 8888
+            - containerPort: 61620
             command:
             - /bin/bash
             - -e
@@ -76,8 +77,23 @@ resources:
       # Uncomment this for external IP for testing.
       # type: LoadBalancer
       ports:
-      - port: {{ PORT }}
-        targetPort: {{ PORT }}
+      - port: 7000
+        targetPort: 7000
+        protocol: TCP
+      - port: 7001
+        targetPort: 7001
+        protocol: TCP
+      - port: 7199
+        targetPort: 7199
+        protocol: TCP
+      - port: 9042
+        targetPort: 9042
+        protocol: TCP
+      - port: 9160
+        targetPort: 9160
+        protocol: TCP
+      - port: 61621
+        targetPort: 61621
         protocol: TCP
       selector:
         name: {{ NODE_NAME }}-0
@@ -107,7 +123,12 @@ resources:
             - name: SEED_NODE_SERVICE
               value: {{ SEED_NAME }}
             ports:
-            - containerPort: {{ PORT }}
+            - containerPort: 7000
+            - containerPort: 7001
+            - containerPort: 7199
+            - containerPort: 9042
+            - containerPort: 9160
+            - containerPort: 61621
             command:
             - /bin/bash
             - -e

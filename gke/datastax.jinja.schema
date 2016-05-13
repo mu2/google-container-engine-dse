@@ -15,15 +15,3 @@ properties:
     type: integer
     description: Number of nodes in the cluster, used for the host-port hack.
     default: 4
-  ports:
-    type: object
-    default: {}
-    properties:
-      opscenter:
-        type: integer
-        description: Port for OpsCenter
-        default: 8888
-      node:
-        type: integer
-        description: Port for DataStax Enterprise nodes
-        default: 9042
