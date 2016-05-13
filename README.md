@@ -1,8 +1,6 @@
 # google-container-engine-dse
 Google Deployment Manager scripts for deploying DataStax Enterprise (DSE) on Google Container Engine (GKE)
 
-These don't work yet.  Sorry.  Something isn't right with the network.  Otherwise it all seems there.
-
 ## Creating a Cluster
 
 The [deploy.sh](deploy.sh) script wraps both the deploy cluster and deploy DataStax commands.  You will need gcloud installed and configured.  By default this will deploy a four node cluster.  To create a cluster simply run:
@@ -32,10 +30,9 @@ To check your cluster is running from the command line you can run:
 
     kubectl exec datastax-node-0-n1yqu nodetool status
 
-You can also log into the GCE machine running a particular container via SSH and issue docker commands.  To start an interactive shell session on a container (useful for debugging and running cqlsh) do the following:
+To get an interactive session to a node you can run:
 
-    sudo docker ps
-    sudo docker exec -i -t 83cddbf5327c /bin/bash
+    kubectl exec -it datastax-node-0-8yk87 /bin/bash
 
 ## Deleting a Cluster
 
