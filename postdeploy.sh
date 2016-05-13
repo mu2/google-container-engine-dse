@@ -15,8 +15,10 @@ kubectl get pods
 #          - seeds: "10.163.241.102"
 
 # this sed isn't working for some reason.  It works when run from an interactive session
-kubectl exec datastax-node-0-n1yqu sed -i 's/10.163.241.102/10.160.0.3/' /etc/dse/cassandra/cassandra.yaml
+kubectl exec datastax-node-0-8yk87 -- sed -i 's/10.163.241.102/10.160.0.3/' /etc/dse/cassandra/cassandra.yaml
 
 kubectl exec datastax-node-0-n1yqu cat /etc/dse/cassandra/cassandra.yaml | grep seeds:
 kubectl exec datastax-node-0-n1yqu service dse restart
 kubectl exec datastax-node-0-n1yqu nodetool status
+
+kubectl exec -it datastax-node-0-8yk87 /bin/bash
