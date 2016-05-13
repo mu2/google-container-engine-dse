@@ -3,7 +3,7 @@
 gcloud container clusters get-credentials cluster-clustername
 kubectl get pods
 
-# Need this information:
+# To reconfigure the seeds we need this information:
 # datastax-node-0-n1yqu 10.160.0.3
 # datastax-node-1-l4dqs
 # datastax-node-2-jc7dm
