@@ -3,9 +3,9 @@ Google Deployment Manager scripts for deploying DataStax Enterprise (DSE) on Goo
 
 These don't work yet.  Sorry.  Something isn't right with the network.  Otherwise it all seems there.
 
-## Getting Started
+## Creating a Cluster
 
-The [deploy.sh](deploy.sh) script wraps both the deploy cluster and deploy DataStax commands.  By default this will deploy a four node cluster.  To create a cluster simply run:
+The [deploy.sh](deploy.sh) script wraps both the deploy cluster and deploy DataStax commands.  You will need gcloud installed and configured.  By default this will deploy a four node cluster.  To create a cluster simply run:
 
     ./deploy.sh
 
