@@ -39,4 +39,6 @@ You can also log into the GCE machine running a particular container via SSH and
 
 ## Deleting a Cluster
 
-The [https://cloud.google.com/](https://cloud.google.com/) interface currently has an issue deleting a cluster.  A workaround is provided in the [delete.sh](delete.sh) script.
+The [https://cloud.google.com/](https://cloud.google.com/) interface currently has an issue deleting a cluster.  A workaround is provided in the [delete.sh](delete.sh) script.  To delete the cluster simply run:
+
+    ./delete.sh
