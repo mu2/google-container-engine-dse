@@ -5,52 +5,17 @@ These don't work yet.  Sorry.  Something isn't right with the network.  Otherwis
 
 ## Getting Started
 
-The [deploy.sh](deploy.sh) script wraps both the deploy cluster and deploy DataStax commands.  To create a cluster simply run:
+The [deploy.sh](deploy.sh) script wraps both the deploy cluster and deploy DataStax commands.  By default this will deploy a four node cluster.  To create a cluster simply run:
 
     ./deploy.sh
 
-### Inside deploy.sh -- Deploy a Cluster
-
-Consider modifying the following information in `cluster.yaml` before deploying:
-
-* desired cluster name, `clustername` by default
-* basicauth username and password for authenticating access to the cluster
-
-deploy.sh runs the command:
-
-    gcloud deployment-manager deployments create cluster --config cluster.yaml
-
-This will result in two resources:
-
-* a GKE cluster with the name specified in `cluster.yaml`
-* a Deployment Manager type named `cluster-clustername`
-
-### Inside deploy.sh -- Deploying DataStax
-
-Consider modifying the following information in `datastax.yaml` before deploying:
-
-* the cluster type created for the GKE cluster deployed previously
-* the number of nodes in the cluster (if changed from the default 4 nodes)
-
-deploy.sh runs the command:
-
-    gcloud deployment-manager deployments create datastax --config datastax.yaml
-
-## Deleting a Cluster
-
-The [https://cloud.google.com/](https://cloud.google.com/) interface currently has an issue deleting a cluster.  A workaround is provided in the [delete.sh](delete.sh) script.
-
 ## Working with a Cluster
-
-A good place to start:
-
-    gcloud container clusters list
 
 With the current configs, our cluster is always called cluster-clustername, so we can get credentials by running:
 
     gcloud container clusters get-credentials cluster-clustername
 
-Now kubectl will work.  We can get the names of the nodes with the command:
+Now kubectl will be able to connect.  We can get the names of the nodes with the command:
 
     kubectl get pods
 
@@ -63,13 +28,15 @@ To get the external IP of the OpsCenter machine (running on port 8888) use the f
 
     kubectl get services
 
-To check your cluster is running from the command line you can run the command:
+To check your cluster is running from the command line you can run:
 
     kubectl exec datastax-node-0-n1yqu nodetool status
 
-You can also log into the GCE machine running a particular container via SSH and issue docker commands.  To start an interactive shell session on a container (useful for debugging and running nodetool and cqlsh) do the following:
+You can also log into the GCE machine running a particular container via SSH and issue docker commands.  To start an interactive shell session on a container (useful for debugging and running cqlsh) do the following:
 
     sudo docker ps
     sudo docker exec -i -t 83cddbf5327c /bin/bash
 
-This is a great reference for getting started with docker commands: https://docs.docker.com/engine/quickstart/
+## Deleting a Cluster
+
+The [https://cloud.google.com/](https://cloud.google.com/) interface currently has an issue deleting a cluster.  A workaround is provided in the [delete.sh](delete.sh) script.
