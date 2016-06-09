@@ -7,9 +7,9 @@ apt-get -y install sudo
 apt-get -y install unzip
 echo "done with prerequisites"
 
-wget https://github.com/DSPN/install-datastax/archive/master.zip
-unzip master.zip
-cd install-datastax-master/bin
+wget https://github.com/DSPN/install-datastax/archive/1.0.zip
+unzip 1.0.zip
+cd install-datastax-1.0/bin
 
 cloud_type="gke"
 seed_nodes_dns_names=$SEED_NODE_SERVICE
