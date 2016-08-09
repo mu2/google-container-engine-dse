@@ -8,7 +8,7 @@ apt-get -y install unzip
 echo "done with prerequisites"
 
 wget https://github.com/DSPN/install-datastax/archive/5.0.1-1.zip
-unzip unzip 5.0.1-1.zip
+unzip 5.0.1-1.zip
 cd install-datastax-5.0.1-1/bin
 
 cloud_type="gke"
