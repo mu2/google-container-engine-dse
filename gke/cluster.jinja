@@ -31,7 +31,14 @@ resources:
         basicAuth:
           user: $(ref.{{ CLUSTER_NAME }}.masterAuth.username)
           password: $(ref.{{ CLUSTER_NAME }}.masterAuth.password)
-
+          configurableService:
+      options:
+        validationOptions:
+          # Kubernetes API accepts ints, in fields they annotate with string.
+          # This validation will show as warning rather than failure for
+          # Deployment Manager.
+          # https://github.com/kubernetes/kubernetes/issues/2971
+          schemaValidation: IGNORE_WITH_WARNINGS
 outputs:
 - name: clusterType
   value: {{ TYPE_NAME }}
