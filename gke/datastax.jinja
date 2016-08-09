@@ -25,11 +25,11 @@ resources:
       type: LoadBalancer
       ports:
       - port: 8888
-        targetPort: '8888'
+        targetPort: 8888
         protocol: TCP
         name: port8888
       - port: 61620
-        targetPort: '61620'
+        targetPort: 61620
         protocol: TCP
         name: port61620
       selector:
@@ -80,27 +80,27 @@ resources:
       # type: LoadBalancer
       ports:
       - port: 7000
-        targetPort: '7000'
+        targetPort: 7000
         protocol: TCP
         name: port7000
       - port: 7001
-        targetPort: '7001'
+        targetPort: 7001
         protocol: TCP
         name: port7001
       - port: 7199
-        targetPort: '7199'
+        targetPort: 7199
         protocol: TCP
         name: port7199
       - port: 9042
-        targetPort: '9042'
+        targetPort: 9042
         protocol: TCP
         name: port9042
       - port: 9160
-        targetPort: '9160'
+        targetPort: 9160
         protocol: TCP
         name: port9160
       - port: 61621
-        targetPort: '61621'
+        targetPort: 61621
         protocol: TCP
         name: port61621
       selector:
