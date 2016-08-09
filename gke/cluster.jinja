@@ -31,7 +31,6 @@ resources:
         basicAuth:
           user: $(ref.{{ CLUSTER_NAME }}.masterAuth.username)
           password: $(ref.{{ CLUSTER_NAME }}.masterAuth.password)
-          configurableService:
       options:
         validationOptions:
           # Kubernetes API accepts ints, in fields they annotate with string.
