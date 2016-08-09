@@ -1,5 +1,4 @@
 imports:
-- path: cluster-type.jinja
 - path: cluster.jinja
 
 resources:
