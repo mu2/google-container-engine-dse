@@ -130,6 +130,8 @@ resources:
             env:
             - name: SEED_NODE_SERVICE
               value: {{ SEED_NAME }}
+            - name: OPSCENTER_NAME
+              value: {{ OPSCENTER_NAME }}
             ports:
             - containerPort: 7000
             - containerPort: 7001
