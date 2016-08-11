@@ -5,5 +5,7 @@ resources:
 - name: clustername
   type: cluster.jinja
   properties:
-    username: username
+    username: username 
     password: password
+    zone: us-central1-b
+    machineType: n1-standard-4
