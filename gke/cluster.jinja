@@ -7,6 +7,7 @@ resources:
 - name: {{ CLUSTER_NAME }}
   type: container.v1.cluster
   properties:
+    machineType: n1-standard-8
     zone: us-central1-f
     cluster:
       name: {{ CLUSTER_NAME }}
