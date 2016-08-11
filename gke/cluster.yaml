@@ -5,6 +5,7 @@ resources:
 - name: clustername
   type: cluster.jinja
   properties:
+    numNodes: 4
     username: username 
     password: password
     zone: us-central1-f

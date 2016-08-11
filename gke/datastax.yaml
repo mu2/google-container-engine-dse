@@ -6,3 +6,4 @@ resources:
   type: datastax.jinja
   properties:
     clusterType: cluster-clustername-type
+    numNodes: 4
