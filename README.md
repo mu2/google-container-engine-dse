@@ -1,5 +1,3 @@
-With the migration to 1.3 these seem to have stopped working.  We're working to fix that.
-
 # google-container-engine-dse
 Google Deployment Manager scripts for deploying DataStax Enterprise (DSE) on Google Container Engine (GKE)
 
