@@ -17,35 +17,40 @@ A successful deploy should look like this:
 
 With the current configs, our cluster is always called cluster-clustername, so we can get credentials by running:
 
-    gcloud container clusters get-credentials cluster-clustername
+	gcloud container clusters get-credentials cluster-clustername
 
 Now kubectl will be able to connect to the cluster.  We can get the names of the nodes with the command:
 
-    kubectl get pods
+	kubectl get pods
 
 ![](./img/getpods.png)
 
 Once you get a pod's name, you can run the following.  Previous is especially useful in debugging as it shows the logs from the last container that attempted to run.
 
-    kubectl logs datastax-opscenter-rc-5qjv6
-    kubectl logs --previous datastax-opscenter-rc-5qjv6
+	kubectl logs datastax-opscenter-rc-5qjv6
+	kubectl logs --previous datastax-opscenter-rc-5qjv6
 
 To get the external IP of the OpsCenter machine (running on port 8888) use the following command.  You can then open a web browser to that ip and port to view OpsCenter.
 
-    kubectl get services
+	kubectl get services
 
 ![](./img/getservices.png)
 
-To check your cluster is running from the command line you can run:
+Deployment can take up to 15 minutes.  Once your DataStax is deployed on top of the Kubernetes cluster, OpsCenter will be accessible via a web browser on port 8888 of external IP for OpsCenter.
 
-    kubectl exec datastax-node-0-n1yqu nodetool status
+![](./img/opscenter.png)
+
+You can also check your cluster is running from the command line:
+
+	kubectl exec datastax-node-0-n1yqu nodetool status
 
 To get an interactive session to a node you can run:
 
-    kubectl exec -it datastax-node-0-8yk87 /bin/bash
+	kubectl exec -it datastax-node-0-8yk87 /bin/bash
 
 ## Deleting a Cluster
 
 The [https://cloud.google.com/](https://cloud.google.com/) interface currently has an issue deleting a cluster.  A workaround is provided in the [delete.sh](delete.sh) script.  To delete the cluster simply run:
 
     ./delete.sh
+
