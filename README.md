@@ -3,9 +3,15 @@ Google Deployment Manager scripts for deploying DataStax Enterprise (DSE) on Goo
 
 ## Creating a Cluster
 
-The [deploy.sh](deploy.sh) script wraps both the deploy cluster and deploy DataStax commands.  You will need gcloud installed and configured.  By default this will deploy a four node cluster.  To create a cluster simply run:
+The [deploy.sh](deploy.sh) script wraps both the deploy cluster and deploy DataStax commands.  You will need gcloud installed and configured.  By default this will deploy a four node cluster.  To create a cluster simply clone this repo and run the deploy command:
 
-    ./deploy.sh
+  git clone https://github.com/DSPN/google-container-engine-dse.git
+  cd google-container-engine-dse
+  ./deploy.sh
+
+A successful deploy should look like this:
+
+![](./img/deploy.png)
 
 ## Working with a Cluster
 
@@ -13,9 +19,11 @@ With the current configs, our cluster is always called cluster-clustername, so w
 
     gcloud container clusters get-credentials cluster-clustername
 
-Now kubectl will be able to connect.  We can get the names of the nodes with the command:
+Now kubectl will be able to connect to the cluster.  We can get the names of the nodes with the command:
 
     kubectl get pods
+
+![](./img/getpods.png)
 
 Once you get a pod's name, you can run the following.  Previous is especially useful in debugging as it shows the logs from the last container that attempted to run.
 
@@ -25,6 +33,8 @@ Once you get a pod's name, you can run the following.  Previous is especially us
 To get the external IP of the OpsCenter machine (running on port 8888) use the following command.  You can then open a web browser to that ip and port to view OpsCenter.
 
     kubectl get services
+
+![](./img/getservices.png)
 
 To check your cluster is running from the command line you can run:
 
