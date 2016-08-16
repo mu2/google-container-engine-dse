@@ -54,3 +54,5 @@ The [https://cloud.google.com/](https://cloud.google.com/) interface currently h
 
     ./delete.sh
 
+![](./img/delete.png)
+
