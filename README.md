@@ -5,9 +5,9 @@ Google Deployment Manager scripts for deploying DataStax Enterprise (DSE) on Goo
 
 The [deploy.sh](deploy.sh) script wraps both the deploy cluster and deploy DataStax commands.  You will need gcloud installed and configured.  By default this will deploy a four node cluster.  To create a cluster simply clone this repo and run the deploy command:
 
-  git clone https://github.com/DSPN/google-container-engine-dse.git
-  cd google-container-engine-dse
-  ./deploy.sh
+	git clone https://github.com/DSPN/google-container-engine-dse.git
+	cd google-container-engine-dse
+	./deploy.sh
 
 A successful deploy should look like this:
 
