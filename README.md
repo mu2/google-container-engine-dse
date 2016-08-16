@@ -30,6 +30,14 @@ Once you get a pod's name, you can run the following.  Previous is especially us
 	kubectl logs datastax-opscenter-rc-5qjv6
 	kubectl logs --previous datastax-opscenter-rc-5qjv6
 
+You can also check your cluster is running from the command line:
+
+	kubectl exec datastax-node-0-n1yqu nodetool status
+
+To get an interactive session to a node you can run:
+
+	kubectl exec -it datastax-node-0-8yk87 /bin/bash
+
 To get the external IP of the OpsCenter machine (running on port 8888) use the following command.  You can then open a web browser to that ip and port to view OpsCenter.
 
 	kubectl get services
@@ -39,14 +47,6 @@ To get the external IP of the OpsCenter machine (running on port 8888) use the f
 Deployment can take up to 15 minutes.  Once your DataStax is deployed on top of the Kubernetes cluster, OpsCenter will be accessible via a web browser on port 8888 of external IP for OpsCenter.
 
 ![](./img/opscenter.png)
-
-You can also check your cluster is running from the command line:
-
-	kubectl exec datastax-node-0-n1yqu nodetool status
-
-To get an interactive session to a node you can run:
-
-	kubectl exec -it datastax-node-0-8yk87 /bin/bash
 
 ## Deleting a Cluster
 
