@@ -9,9 +9,9 @@ apt-get -y install apt-transport-https
 apt-get -y install unzip
 echo "done with prerequisites"
 
-wget https://github.com/DSPN/install-datastax/archive/5.0.1-4.zip
-unzip 5.0.1-4.zip
-cd install-datastax-ubuntu-5.0.1-4/bin
+wget https://github.com/DSPN/install-datastax-ubuntu/archive/master.zip
+unzip master.zip
+cd install-datastax-ubuntu-master/bin
 
 cloud_type="gke"
 seed_nodes_dns_names=$SEED_NODE_SERVICE
