@@ -7,7 +7,7 @@ The [deploy.sh](deploy.sh) script wraps both the deploy cluster and deploy DataS
 
 	git clone https://github.com/DSPN/google-container-engine-dse.git
 	cd google-container-engine-dse
-	./deploy.sh ben1
+	./deploy.sh 
 
 A successful deploy should look like this:
 

@@ -11,7 +11,7 @@
 
 resources:
 #
-# OpsCenter node
+# OpsCenter node (headless service)
 #
 - name: {{ OPSCENTER_NAME }}
   type: {{ CLUSTER_TYPE }}:{{ SERVICE_COLLECTION }}
@@ -22,7 +22,7 @@ resources:
     metadata:
       name: {{ OPSCENTER_NAME }}
     spec:
-      type: LoadBalancer
+      clusterIP: None
       ports:
       - port: 8888
         targetPort: 8888
@@ -35,6 +35,30 @@ resources:
       selector:
         name: {{ OPSCENTER_NAME }}
 
+#
+# OpsCenter node (external lb)
+#
+- name: {{ OPSCENTER_NAME }}-external-lb
+  type: {{ CLUSTER_TYPE }}:{{ SERVICE_COLLECTION }}
+  properties:
+    apiVersion: v1
+    kind: Service
+    namespace: default
+    metadata:
+      name: {{ OPSCENTER_NAME }}-external-lb
+    spec:
+      type: LoadBalancer
+      ports:
+      - port: 8888
+        targetPort: 8888
+        protocol: TCP
+        name: port8888
+      selector:
+        name: {{ OPSCENTER_NAME }}
+
+#
+# OpsCenter RC
+#
 - name: {{ OPSCENTER_NAME }}-rc
   type: {{ CLUSTER_TYPE }}:{{ RC_COLLECTION }}
   properties:
@@ -65,7 +89,7 @@ resources:
             - apt-get update; apt-get -y install wget; wget https://raw.githubusercontent.com/DSPN/google-container-engine-dse/master/scripts/opscenter.sh; chmod +x opscenter.sh; ./opscenter.sh
 
 #
-# Seed service
+# DSE seed node (headless service)
 #
 - name: {{ SEED_NAME }}
   type: {{ CLUSTER_TYPE }}:{{ SERVICE_COLLECTION }}
@@ -76,8 +100,7 @@ resources:
     metadata:
       name: {{ SEED_NAME }}
     spec:
-      # Uncomment this for external IP for testing.
-      # type: LoadBalancer
+      clusterIP: None 
       ports:
       - port: 7000
         targetPort: 7000
@@ -107,7 +130,7 @@ resources:
         name: {{ NODE_NAME }}-0
 
 #
-# DataStax Enterprise nodes
+# DSE Nodes RC
 #
 {% for i in range(properties['numNodes']) %}
 - name: {{ NODE_NAME }}-{{ i }}
@@ -139,9 +162,15 @@ resources:
             - containerPort: 9042
             - containerPort: 9160
             - containerPort: 61621
+            volumeMounts:
+              - mountPath: /mnt
+                name: dse-data
             command:
             - /bin/bash
             - -e
             - -c
             - apt-get update; apt-get -y install wget; wget https://raw.githubusercontent.com/DSPN/google-container-engine-dse/master/scripts/dse.sh; chmod +x dse.sh; ./dse.sh
+          volumes:
+            - name: dse-data
+              emptyDir: {}
 {% endfor %}

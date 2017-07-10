@@ -26,5 +26,5 @@ echo opscenter_dns_name $opscenter_dns_name
 
 ./dse.sh $cloud_type $seed_nodes_dns_names $data_center_name $opscenter_dns_name
 
-# 100 hours
-sleep 360000
+# Run indefinitely
+tail -f /dev/null

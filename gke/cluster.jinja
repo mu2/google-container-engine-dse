@@ -1,6 +1,8 @@
 {% set NAME_PREFIX = env['deployment'] + '-' + env['name'] %}
 {% set CLUSTER_NAME = NAME_PREFIX %}
 {% set TYPE_NAME = NAME_PREFIX + '-type' %}
+{% set K8S_ENDPOINTS = {'': 'api/v1', '-v1beta1-extensions': 'apis/extensions/v1beta1', '-apis-apps-v1beta1': 'apis/apps/v1beta1'} %}
+
 
 resources:
 # Create GKE cluster.
@@ -23,11 +25,12 @@ resources:
         password: {{ properties['password'] }}
 
 # Then create a type for it
-- name: {{ TYPE_NAME }}
+{% for typeSuffix, endpoint in K8S_ENDPOINTS.iteritems() %}
+- name: {{ TYPE_NAME }}{{typeSuffix}}
   type: deploymentmanager.alpha.type
   properties:
     configurableService:
-      descriptorUrl: https://$(ref.{{ CLUSTER_NAME }}.endpoint)/swaggerapi/api/v1
+      descriptorUrl: https://$(ref.{{ CLUSTER_NAME }}.endpoint)/swaggerapi/{{ endpoint }}
       credential:
         basicAuth:
           user: $(ref.{{ CLUSTER_NAME }}.masterAuth.username)
@@ -39,6 +42,10 @@ resources:
           # Deployment Manager.
           # https://github.com/kubernetes/kubernetes/issues/2971
           schemaValidation: IGNORE_WITH_WARNINGS
+{% endfor %}
+
 outputs:
-- name: clusterType
-  value: {{ TYPE_NAME }}
+{% for typeSuffix, endpoint in K8S_ENDPOINTS.iteritems() %}
+- name: clusterType{{ typeSuffix }}
+  value: {{ TYPE_NAME }}{{ typeSuffix }}
+{% endfor %}
