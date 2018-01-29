@@ -76,6 +76,10 @@ resources:
           containers:
           - name: opscenter
             image: ubuntu:14.04
+            resources:
+              requests:
+                cpu: "2"
+                memory: "4000Mi"
             env:
             - name: SEED_NODE_SERVICE
               value: {{ SEED_NAME }}
@@ -150,6 +154,10 @@ resources:
           containers:
           - name: datastax
             image: ubuntu:14.04
+            resources:
+              requests:
+                cpu: "2"
+                memory: "4000Mi"
             env:
             - name: SEED_NODE_SERVICE
               value: {{ SEED_NAME }}

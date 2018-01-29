@@ -7,6 +7,6 @@ resources:
   properties:
     numNodes: 4
     username: username 
-    password: password
+    password: gke_cluster_password
     zone: us-central1-f
     machineType: n1-standard-8
