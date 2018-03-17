@@ -14,7 +14,7 @@ Deploying DataStax Enterprise on Google Container Engine (GKE) includes a limite
 * Check [here](https://kubernetes.io/docs/tasks/tools/install-kubectl/) to find out how to install **kubectl**, the Kubernetes command-line tool.
 
 ##### Step 1. Create a Google Container Engine (GKE) cluster
-You are required to create a GKE cluster using vm type, **n1-standard-8** in order to have ample CPU and memory to deploy a DSE cluster.  In addition, the artifacts in this repo have been tested in a GKE cluster version **v1.8.8-gke.0**.  The command to create such cluster with 4 worker nodes in **us-west1-b** availability zone is shown below.  Check [here](https://cloud.google.com/sdk/gcloud/) to find out how to install **gcloud** as part of the Google Cloud SDK.
+You are required to create a GKE cluster using vm type, **n1-standard-8** in order to have ample CPU and memory to deploy a DSE cluster.  In addition, the artifacts in this repo have been tested in a GKE cluster version **v1.8.8-gke.0**.  The command to create such cluster with 4 worker nodes in **us-west1-b** availability zone is shown below. 
 ```
 $ gcloud container clusters create k8-188-gke --cluster-version=1.8.8-gke.0 --zone us-west1-b --machine-type n1-standard-8 --num-nodes 4
 ```
