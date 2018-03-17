@@ -7,10 +7,14 @@ The use of this repo is intended for development purpose only.  Usage of this re
 The use of DataStax software is free in development. Deploying and running DataStax software on a cloud provider will incur costs associated with the underlying cloud provider’s resources such as compute, network and storage, etc.  Please refer to your cloud provider for effective cloud resources pricing.
 
 ## Licensing Terms
-Deploying DataStax Enterprise on Google Compute Engine (GCE) includes a limited no-fee license from DataStax. As described in section 1.4 of [DataStax Enterprise Terms](https://www.datastax.com/enterprise-terms), the limited license is for development or non-production use.
+Deploying DataStax Enterprise on Google Container Engine (GKE) includes a limited no-fee license from DataStax. As described in section 1.4 of [DataStax Enterprise Terms](https://www.datastax.com/enterprise-terms), the limited license is for development or non-production use.
+
+#### Prerequisites:
+* Check [here](https://cloud.google.com/sdk/gcloud/) to find out how to install **gcloud** as part of the Google Cloud SDK.
+* Check [here](https://kubernetes.io/docs/tasks/tools/install-kubectl/) to find out how to install **kubectl**, the Kubernetes command-line tool.
 
 ##### Step 1. Create a Google Container Engine (GKE) cluster
-You are required to create a GKE cluster using vm type, **n1-standard-8** in order to have ample CPU and memory to deploy a DSE cluster.  In addition, the artifacts in this repo have been tested in a GKE cluster version **v1.8.8-gke.0**.  The command to create such cluster with 4 worker nodes in **us-west1-b** availability zone is as follows: 
+You are required to create a GKE cluster using vm type, **n1-standard-8** in order to have ample CPU and memory to deploy a DSE cluster.  In addition, the artifacts in this repo have been tested in a GKE cluster version **v1.8.8-gke.0**.  The command to create such cluster with 4 worker nodes in **us-west1-b** availability zone is shown below.  Check [here](https://cloud.google.com/sdk/gcloud/) to find out how to install **gcloud** as part of the Google Cloud SDK.
 ```
 $ gcloud container clusters create k8-188-gke --cluster-version=1.8.8-gke.0 --zone us-west1-b --machine-type n1-standard-8 --num-nodes 4
 ```
@@ -27,12 +31,12 @@ You should see a similar output below:
 ![](./img/k8_get_nodes.png)
 
 
-##### Step 2. Clone the github project for the DSE Statefuls yamls
+##### Step 2. Clone the github project
 ```
 Run $ git clone https://github.com/dspn/google-container-engine-dse
 ```
 
-##### Step 3. Create a storage class named **fast** in your GKE environment 
+##### Step 3. Create a storage class named "fast" in your GKE environment 
 ```
 Run $ cd storage-k8
 Run $ more storageclass_GCE.yaml (to view the stroage class definition)
@@ -64,7 +68,7 @@ It will take a few minutes to deploy the OpsCenter in a brand new GKE cluster si
 Run $ kubectl logs opscenter-0 (to view OpsCenter's log)
 Run $ cd ..
 ```
-You should see similar information at the bottom of output of this command **$ kubectl describe pods dse-0** after your opscenter-0 pod (OpsCenter) has been successfully deployed:
+You should see similar information at the bottom of output of this command **$ kubectl describe pods opscenter-0** after your opscenter-0 pod (OpsCenter) has been successfully deployed:
 ![](./img/k8_opsc_describe_pods.png)
 
 

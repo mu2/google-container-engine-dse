@@ -15,5 +15,5 @@ Variable | Setting        | Description
 `NUM_TOKENS`|*int*|The number of tokens randomly assigned to the node. Default: `8`.
 `DC` | *string* | Datacenter name. Default: `Cassandra`.
 `RACK` | *string* | Rack name. Default: `rack1`.
-`DSE_DATA` | *string* | **Required**. Directoy path for storing DSE data. For example, a directory named "/dse-data" will be created on the docker container if the value of DSE_DATA is dse-data.
+`DSE_DATA` | *string* | **Required**. Directoy path for storing DSE data on persistent storage. For example, a directory named "/dse-data" will be created on the docker container if the value of DSE_DATA is dse-data.
 
