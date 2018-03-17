@@ -83,7 +83,7 @@ You should see a similar output below:
 
 
 ##### Step 7. Create DSE StatefulSet using external cloud provider's storage (ex. persistent disk)
-Please refer to [Using DSE docker container image](./md_files/using_dse_docker_container_image.md).
+*The container image used in the dse.yaml makes use of the required end a few optional container environment variables. Please refer to [Using DSE docker container image](./md_files/using_dse_docker_container_image.md) for more details.*
 ```
 Run $ kubectl apply -f dse.yaml
 Run $ kubectl get pods
