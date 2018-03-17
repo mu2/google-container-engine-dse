@@ -1,9 +1,0 @@
-imports:
-- path: datastax.jinja
-
-resources:
-- name: datastax
-  type: datastax.jinja
-  properties:
-    clusterType: cluster-clustername-type
-    numNodes: 4
