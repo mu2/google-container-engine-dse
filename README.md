@@ -21,6 +21,11 @@ $ gcloud container clusters create k8-188-gke --cluster-version=1.8.8-gke.0 --zo
 A successful deploy should look like this:
 ![](./img/gke_cluster.png)
 
+Then, run the following command to update a kubeconfig file with appropriate credentials and endpoint information to point **kubectl** at your newly created GKE  cluster.
+```
+$ gcloud container clusters get-credentials k8-188-gke --zone us-west1-b 
+```
+
 To learn more about the gcloud CLI to launch a K8 cluster, please refer to [here](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create).  Finally, you should ensure to match up "kubectl" CLI client's version with the K8 cluster's version. You can run this command **$ kubectl version** to find out which versions you are on.
 
 Next, you can run the following command to view your GKE cluster nodes' status and version. 
@@ -36,7 +41,7 @@ You should see a similar output below:
 Run $ git clone https://github.com/dspn/google-container-engine-dse
 ```
 
-##### Step 3. Create a storage class named "fast" in your GKE environment 
+##### Step 3. Create a storage class named "fast" in your GKE environment for dynamic volume provisioning
 ```
 Run $ cd storage-k8
 Run $ more storageclass_GCE.yaml (to view the stroage class definition)
@@ -48,7 +53,7 @@ You should see a similar output below:
 ![](./img/k8_sc.png)
 
 
-##### Step 4. Create Headless and External LB services for OpsCenter
+##### Step 4. Create Headless and External LB services for DataStax Enterprise OpsCenter
 ```
 Run $ cd opsc-k8
 Run $ kubectl apply -f opscenter-service.yaml

@@ -30,8 +30,8 @@ spec:
         image: gcr.io/datastax-public/dse-server:5.1.6
         resources:
           requests:
-            cpu: "1"
-            memory: "2000Mi"
+            cpu: "2"
+            memory: "4000Mi"
         env:
         - name: DS_LICENSE
           value: accept
