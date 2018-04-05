@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: studio-ext-lb
+  labels:
+    app: studio
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 9091
+    name: studio-gui-port
+  selector:
+    app: studio
+

@@ -28,6 +28,7 @@ spec:
       containers:
       - name: dse
         image: gcr.io/datastax-public/dse-server:5.1.6
+        args: [ "dse", "cassandra", "-s", "-k", "-g", "-f"]
         resources:
           requests:
             cpu: "2"

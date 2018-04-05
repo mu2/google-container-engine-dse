@@ -1,0 +1,26 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: studio
+spec:
+  serviceName: "studio"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: studio
+    spec:
+      containers:
+        - name: studio
+          image: datastax/dse-studio:2.0.0
+          resources:
+            requests:
+              cpu: "2"
+              memory: "4000Mi"
+          env:
+          - name: DS_LICENSE
+            value: accept
+          ports:
+          - containerPort: 9091
+            name: studio-gui-port
+

@@ -1,5 +1,5 @@
 # google-container-engine-dse
-Scripts for deploying DataStax Enterprise (DSE) on Google Container Engine (GKE)
+Scripts for deploying DataStax Enterprise (DSE) on Google Kubernetes Engine (GKE)
 
 ## Disclaimer
 The use of this repo is intended for development purpose only.  Usage of this repo is solely at user’s own risks.  There is no SLAs around any issues posted on this repo.  Internal prioritization of repo issues will be processed by the owners of this repo periodically.  There is no association with any technical support subscription from DataStax.
@@ -7,13 +7,13 @@ The use of this repo is intended for development purpose only.  Usage of this re
 The use of DataStax software is free in development. Deploying and running DataStax software on a cloud provider will incur costs associated with the underlying cloud provider’s resources such as compute, network and storage, etc.  Please refer to your cloud provider for effective cloud resources pricing.
 
 ## Licensing Terms
-Deploying DataStax Enterprise on Google Container Engine (GKE) includes a limited no-fee license from DataStax. As described in section 1.4 of [DataStax Enterprise Terms](https://www.datastax.com/enterprise-terms), the limited license is for development or non-production use.
+Deploying DataStax Enterprise on Google Kubernetes Engine (GKE) includes a limited no-fee license from DataStax. As described in section 1.4 of [DataStax Enterprise Terms](https://www.datastax.com/enterprise-terms), the limited license is for development or non-production use.
 
 #### Prerequisites:
 * Check [here](https://cloud.google.com/sdk/gcloud/) to find out how to install **gcloud** as part of the Google Cloud SDK.
 * Check [here](https://kubernetes.io/docs/tasks/tools/install-kubectl/) to find out how to install **kubectl**, the Kubernetes command-line tool.
 
-##### Step 1. Create a Google Container Engine (GKE) cluster
+##### Step 1. Create a Google Kubernetes Engine (GKE) cluster
 You are required to create a GKE cluster using vm type, **n1-standard-8** in order to have ample CPU and memory to deploy a DSE cluster.  In addition, the artifacts in this repo have been tested in a GKE cluster version **v1.8.8-gke.0**.  The command to create such cluster with 4 worker nodes in **us-west1-b** availability zone is shown below. 
 ```
 $ gcloud container clusters create k8-188-gke --cluster-version=1.8.8-gke.0 --zone us-west1-b --machine-type n1-standard-8 --num-nodes 4
