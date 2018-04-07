@@ -127,15 +127,16 @@ Run $ kubectl apply -f studio-ext-lb-service.yaml
 Run $ kubectl apply -f studio.yaml
 Run $ cd ..
 ```
-You should see similar information at the bottom of output of this command **$ kubectl describe pods studio-0**:
+You should see similar information at the bottom of output of this command **$ kubectl describe pods studio-0**
 ![](./img/k8_studio_describe_pods.png)
 
 
 ##### Step 11. Run DataStax Studio Notebook Tutorials
-* Run $ kubectl get services -l app=studio (to grab the Studio's EXTERNAL-IP)
+* Run **$ kubectl get services -l app=studio** (to grab the Studio's EXTERNAL-IP)
+![](./img/k8_studio_ext_lb.png)
 * Point your browser at http://<Studio's EXTERNAL-IP>:9091
-* Update the Host/IP field of "DSE Graph QuickStart" and "Tutorial Connection" to dse-0.dse.default.svc.cluster.local through accessing the three-line menu at the upper-left corner as shown in the screen shots below.
-![](./img/studio_menu.png)
+* Update the Host/IP field of "DSE Graph QuickStart" and "Tutorial Connection" to **dse-0.dse.default.svc.cluster.local** through accessing the three-line menu at the upper-left corner as shown in the screen shots below.
+![](./img/studio_menu.png)<br>
 ![](./img/studio_connection.png)
 * The updated connections should look like the following.
 ![](./img/studio_updated_connection.png)
