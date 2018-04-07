@@ -140,7 +140,7 @@ You should see similar information at the bottom of output of this command **$ k
 ![](./img/studio_connection.png)
 * The updated connections should look like the following.
 ![](./img/studio_updated_connection.png)
-* You can now click **Notebooks** (see below) to go back to Notebook screen to run through the three provided self-paced tutorials.
+* You can now click **Notebooks** (see below) to go back to Notebook screen to begin the three provided self-paced guided tutorials on CQL and DSE Graph.
 ![](./img/studio_notebook.png)
 
 
