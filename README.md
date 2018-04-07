@@ -115,27 +115,53 @@ You can also try running this command **$ kubectl exec -it dse-0 nodetool status
 ![](./img/opscenter.png)
 
 
-##### Step 9. Run cassandra-stress test
+##### Step 9. Create external load balancer for DataStax Studio IDE
 ```
-Run $ kubectl exec -it dse-0 /bin/bash
-Run # /opt/dse/resources/cassandra/tools/bin/cassandra-stress write n=1000000 -rate threads=100
-Run # exit
+Run $ cd studio-k8
+Run $ kubectl apply -f studio-ext-lb-service.yaml
 ```
 
 
-##### Step 10. Delete the DSE StatefulSet with external storage
+##### Step 10. Create DataStax Studio StatefulSet
+```
+Run $ kubectl apply -f studio.yaml
+Run $ cd ..
+```
+You should see similar information at the bottom of output of this command **$ kubectl describe pods studio-0**:
+![](./img/k8_studio_describe_pods.png)
+
+
+##### Step 11. Run DataStax Studio Notebook Tutorials
+* Run $ kubectl get services -l app=studio (to grab the Studio's EXTERNAL-IP)
+* Point your browser at http://<Studio's EXTERNAL-IP>:9091
+* Update the Host/IP field of "DSE Graph QuickStart" and "Tutorial Connection" to dse-0.dse.default.svc.cluster.local through accessing the three-line menu at the upper-left corner as shown in the screen shots below.
+![](./img/studio_menu.png)
+![](./img/studio_connection.png)
+* The updated connections should look like the following.
+![](./img/studio_updated_connection.png)
+* You can now click **Notebooks** (see below) to go back to Notebook screen to run through the three provided self-paced tutorials.
+![](./img/studio_notebook.png)
+
+
+##### Step 12. Delete the DataStax Studio StatefulSet
+```
+Run $ kubectl delete sts,svc -l app=studio
+```
+
+
+##### Step 13. Delete the DSE StatefulSet with external storage
 ```
 Run $ kubectl delete sts,pvc,svc -l app=dse
 ```
 
 
-##### Step 11. Delete the OpsCenter StatefulSet
+##### Step 14. Delete the OpsCenter StatefulSet
 ```
 Run $ kubectl delete sts,svc -l app=opscenter
 ```
 
 
-##### Step 12. Tear down the GKE cluster if you no longer need it
+##### Step 15. Tear down the GKE cluster if you no longer need it
 ```
 Run $ gcloud container clusters delete k8-188-gke --zone us-west1-b 
 Note: You might have a different GKE cluster name and zone when you created your GKE cluster in step 1 above.
