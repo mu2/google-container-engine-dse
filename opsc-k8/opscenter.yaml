@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: opscenter
-          image: datastax/dse-opscenter:6.1.5
+          image: datastax/dse-opscenter:6.5.0
           resources:
             requests:
               cpu: "2"

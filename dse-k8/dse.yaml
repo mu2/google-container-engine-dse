@@ -27,7 +27,7 @@ spec:
             topologyKey: kubernetes.io/hostname
       containers:
       - name: dse
-        image: gcr.io/datastax-public/dse-server:5.1.6
+        image: gcr.io/datastax-public/dse-server:6.0.0
         args: [ "dse", "cassandra", "-s", "-k", "-g", "-f"]
         resources:
           requests:

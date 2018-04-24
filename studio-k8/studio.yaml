@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: studio
-          image: datastax/dse-studio:2.0.0
+          image: datastax/dse-studio:6.0.0
           resources:
             requests:
               cpu: "2"
